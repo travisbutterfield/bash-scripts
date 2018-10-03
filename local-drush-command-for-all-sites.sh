@@ -10,7 +10,9 @@ declare -a arr="($(ls /var/www/html/ | grep -v "\."))"
 
 for i in "${arr[@]}"
 do
-  drush "$i" $command
+  printf "..... $i .....\n";
+  drush @"$i".local $command;
+  printf "....................\n\n";
 done
 
 unset arr
