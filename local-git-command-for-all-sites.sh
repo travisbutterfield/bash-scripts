@@ -1,8 +1,8 @@
 #!/bin/bash
 
-printf "\nHello!\n\nWelcome to my bash script for doing mass local git operations on all of your Pantheon sites!\n\n"
+printf "\nHello!\n\nWelcome to my bash script for doing mass local git operations on all of\nyour Pantheon sites!\n\nPlease enter your full git command below.\n\n***NOTE: You must escape any special characters and flags (like \"-am\") with a\nbackslash or the command will NOT work.***\n\n"
 
-read -p 'Please enter your full git command here: ' command
+read -p 'Enter command: ' command
 
 declare -a arr="($(ls /var/www/html/ | grep -v "\."))"
 
