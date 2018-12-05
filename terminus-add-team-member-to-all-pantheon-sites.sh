@@ -6,7 +6,7 @@ command="site:team:add"
 read -p "Please enter the member's Pantheon email address: " email
 read -p "Please enter the member's Pantheon role (usually team_member): " pantheonrole
 
-declare -a arr="($(terminus site:list --fields=name,framework | sed -e '/wordpress/d' | sed -n '1,3 !p' | sed -n '$ !p' | tr -s ' ' | cut -d ' ' -f-2))"
+declare -a arr="($(terminus site:list --team --fields=name,framework | sed -e '/wordpress/d' | sed -n '1,3 !p' | sed -n '$ !p' | tr -s ' ' | cut -d ' ' -f-2))"
 
 for i in "${arr[@]}"
 do

@@ -7,7 +7,7 @@ declare -a arr="($(terminus site:list --team --fields=name,framework | sed -e '/
 for i in "${arr[@]}"
 do
   printf "..... $i .....\n";
-  terminus backup:create -- "$i".live;
+  terminus backup:create --element=db -- "$i".live;
   printf "....................\n\n";
 done
 
