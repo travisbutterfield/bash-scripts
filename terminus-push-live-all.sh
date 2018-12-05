@@ -8,6 +8,9 @@ declare -a arr="($(terminus site:list --team --fields=name,framework | sed -e '/
 #create a custom array by uncommenting and editing the next line:
 #declare -a arr=("crd" "crim" "socialwork" "spa")
 
+#uncomment next line to check array
+#printf '%s\n' "${arr[@]}"
+
 for i in "${arr[@]}"
 do
   printf "..... $i .....\n";

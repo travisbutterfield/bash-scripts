@@ -8,6 +8,9 @@ read -p "Please enter the member's Pantheon role (usually team_member): " panthe
 
 declare -a arr="($(terminus site:list --team --fields=name,framework | sed -e '/wordpress/d' | sed -n '1,3 !p' | sed -n '$ !p' | tr -s ' ' | cut -d ' ' -f-2))"
 
+#uncomment next line to check array
+#printf '%s\n' "${arr[@]}"
+
 for i in "${arr[@]}"
 do
   terminus $command $i $email $pantheonrole
