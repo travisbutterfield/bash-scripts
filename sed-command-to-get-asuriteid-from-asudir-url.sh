@@ -1,0 +1,11 @@
+#!/bin/bash
+
+printf "\nHello!\n\nWelcome to my bash script for looking up ASURITE Ids\n\n"
+
+read -p "Please enter the person's First Name: " fname
+
+read -p "Please enter the person's Last Name: " lname
+
+asuriteId=$(lynx -dump https://asudir-solr.asu.edu/asudir/directory/select?q=firstName:$fname%20AND%20lastName:$lname | sed -E 's/\<str>/&\n/g' | grep asuriteId | sed 's/<str name="asuriteId">//' | sed 's\</str>\\')
+
+printf "ASURITE ID: \e[1m\e[94m$asuriteId\n\n"
