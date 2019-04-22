@@ -5,6 +5,8 @@ printf "\nHello!\n\nWelcome to my bash script for doing mass Drush operations on
 read -p 'Please enter your Drush command (minus the initial "drush"): ' command
 
 declare -a arr="($(terminus site:list --team --fields=name,framework | sed -e '/wordpress/d' | sed -e '/morrison-institute/d' | sed -n '1,3 !p' | sed -n '$ !p' | tr -s ' ' | cut -d ' ' -f-2))"
+#declare -a arr=("socialwork" "spa")
+
 
 #uncomment next line to check array
 #printf '%s\n' "${arr[@]}"
