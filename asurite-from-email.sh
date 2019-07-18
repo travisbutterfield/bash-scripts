@@ -1,8 +1,8 @@
 #!/bin/bash
 
-printf "\nHello!\n\nWelcome to my bash script for looking up ASURITE IDs\n\n"
+printf "\nHello!\n\nLook up an ASURITE ID by email address!\n\n"
 
-#read -p "Affiliate's ASU email: " email
+read -p "Affiliate's ASU email: " email
 
 #asuriteId=$(lynx -dump https://asudir-solr.asu.edu/asudir/directory/select?q=emailAddress:$email | sed -E 's/\<str>/&\n/g' | grep asuriteId | sed 's/<str name="asuriteId">//' | sed 's\</str>\\')
 
