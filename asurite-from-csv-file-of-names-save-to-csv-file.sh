@@ -1,6 +1,6 @@
 #!/bin/bash
 
-printf "\nHello!\n\nWelcome to my bash script for looking up ASURITE IDs from a .txt file on your computer\n\n"
+printf "\nHello!\n\nWelcome to my bash script for looking up ASURITE IDs from a .csv file on your computer\n\n"
 
 printf "Please prepare a .csv file with two columns: 'FirstName' and 'LastName'\n\n"
 
