@@ -1,8 +1,8 @@
 #!/bin/bash
 
-printf "\nHello!\n\nWelcome to my bash script for creating a wsupdt multidev environment for updating webspark!\n\n"
+printf "\nHello!\n\nWelcome to my bash script for deleting a multidev environment from all sites in Pantheon.\n\n"
 
-read -p 'Please name your multidev instance: ' multidevname
+read -p 'Please enter the name of the multidev to delete: ' multidevname
 
 declare -a arr="($(terminus site:list --team --fields=name,framework | sed -e '/wordpress/d' | sed -e '/morrison-institute/d' | sed -e '/azwater/d' | sed -e '/lodestar/d' | sed -e '/copp-community/d' | sed -n '1,3 !p' | sed -n '$ !p' | tr -s ' ' | cut -d ' ' -f-2))"
 #create a custom array by uncommenting and editing the next line:
@@ -13,7 +13,7 @@ declare -a arr="($(terminus site:list --team --fields=name,framework | sed -e '/
 
 for i in "${arr[@]}"
 do
-  gnome-terminal --tab --title="$i" -- bash -c 'printf "..... '"$i"' .....\n"; terminus multidev:create '"$i"'.live '"$multidevname"'; printf "....................\n\n"; $SHELL'
+  gnome-terminal --tab --title="$i" -- bash -c 'printf "..... '"$i"' .....\n"; terminus multidev:delete --delete-branch -y -- '"$i"'.'"$multidevname"'; printf "....................\n\n"; $SHELL'
   # printf "..... $i .....\n";
   # terminus multidev:create "$i".live $multidevname;
   # printf "....................\n\n";
