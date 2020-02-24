@@ -4,8 +4,8 @@ printf "\nHello!\n\nWelcome to my bash script for doing mass local git operation
 IFS='\n'
 read -p 'Enter command: ' command
 
-#declare -a arr="($(ls /var/www/html/ | grep -v "\."))"
-declare -a arr="(crim crd)"
+declare -a arr="($(ls /var/www/html/ | grep -v "\."))"
+#declare -a arr="(crim crd)"
 
 # #printf '%s\n' "${arr[@]}"
 
