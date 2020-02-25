@@ -2,7 +2,7 @@
 
 printf "\nHello!\n\nWelcome to my bash script for doing mass local git operations on all of\nyour downloaded Pantheon sites!\n\nPlease enter your full git command.\n\n"
 IFS='\n'
-read -p 'Enter command (please escape any quotes or dashes): ' command
+read -p 'Enter command: ' command
 
 declare -a arr="($(ls /var/www/html/ | grep -v "\." | sed -e '/morrison-institute/d' | sed -e '/d8composer2/d' | sed -e '/azwater/d'))"
 # declare -a arr="(crim crd)"
