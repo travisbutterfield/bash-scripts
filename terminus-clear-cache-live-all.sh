@@ -1,8 +1,7 @@
 #!/bin/bash
 
-printf "\nHello!\n\nWelcome to my bash script for doing mass git push operations on all of your Pantheon sites (from dev to test)!\n\n"
+printf "\nHello!\n\nWelcome to my bash script for doing mass cache clear on all live environments! Please wait while I work in multiple tabs...\n\n"
 IFS='\n'
-read -p 'Please add a note for this mass deployment: ' note
 
 declare -a arr="($(terminus site:list --team --fields=name,framework | sed -e '/wordpress/d' | sed -e '/drupal8/d' | sed -e '/morrison-institute/d' | sed -n '1,3 !p' | sed -n '$ !p' | tr -s ' ' | cut -d ' ' -f-2))"
 #create a custom array by uncommenting and editing the next line:
@@ -13,9 +12,9 @@ declare -a arr="($(terminus site:list --team --fields=name,framework | sed -e '/
 
 for i in "${arr[@]}"
 do
-  gnome-terminal --tab --title="$i" -- bash -c 'printf "..... '"$i"' .....\n"; terminus env:deploy --sync-content --note="'"$note"'" --cc --updatedb -- '"$i"'.test; printf "....................\n\n"; $SHELL'
+  gnome-terminal --tab --title="$i" -- bash -c 'printf "..... '"$i"' .....\n"; terminus env:cc -- '"$i"'.live; printf "....................\n\n"; $SHELL'
   # printf "..... $i .....\n";
-  # terminus env:deploy --sync-content --note="$note" --cc --updatedb -- "$i".test;
+  # terminus env:deploy --sync-content --note="$note" --cc --updatedb -- "$i".live;
   # printf "....................\n\n";
 done
 
