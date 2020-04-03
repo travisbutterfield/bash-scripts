@@ -5,8 +5,8 @@ IFS=$'\n'
 read -p 'Please designate the desired environment (dev, test, live): ' env
 read -p 'Please enter your Drush command (minus the initial "drush"): ' command
 
-# declare -a arr="($(terminus site:list --team --fields=name,framework | sed -e '/wordpress/d' | sed -e '/morrison-institute/d' | sed -e '/drupal8/d' | sed -n '1,3 !p' | sed -n '$ !p' | tr -s ' ' | cut -d ' ' -f-2))"
-declare -a arr="(copp crd spa crim socialwork)"
+declare -a arr="($(terminus site:list --team --fields=name,framework | sed -e '/wordpress/d' | sed -e '/morrison-institute/d' | sed -e '/drupal8/d' | sed -n '1,3 !p' | sed -n '$ !p' | tr -s ' ' | cut -d ' ' -f-2))"
+# declare -a arr="(copp crd spa crim socialwork)"
 
 
 #uncomment next line to check array
