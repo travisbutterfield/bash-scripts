@@ -5,11 +5,9 @@ IFS='\n'
 read -p 'Enter command: ' command
 
 declare -a arr="($(ls /var/www/html/ | grep -v "\." | sed -e '/morrison-institute/d' | sed -e '/d8composer2/d' | sed -e '/azwater/d'))"
-# declare -a arr="(crim crd)"
+# declare -a arr="(crim crd copp spa socialwork)"
 
-#gnome-terminal --tab --title="test" -- bash -c 'eval echo '"'$command'"'; $SHELL'
-
-# #printf '%s\n' "${arr[@]}"
+# printf '%s\n' "${arr[@]}"
 
 for i in "${arr[@]}"
 do
