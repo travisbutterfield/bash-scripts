@@ -14,6 +14,6 @@ printf "Please wait while I process the file.\n\n"
 
 cat "$path" | while read email
 do
-  asuriteId=$(lynx -dump https://asudir-solr.asu.edu/asudir/directory/select?q=emailAddress:$email | sed -E 's/\<str>/&\n/g' | grep asuriteId | sed 's/<str name="asuriteId">//' | sed 's\</str>\\')
+  asuriteId=$(lynx -source https://asudir-solr.asu.edu/asudir/directory/select?q=emailAddress:$email | sed -E 's/\<str>/&\n/g' | grep asuriteId | sed 's/<str name="asuriteId">//' | sed 's\</str>\\')
   echo $email,$asuriteId >> ~/asurite-ids-output.csv
 done

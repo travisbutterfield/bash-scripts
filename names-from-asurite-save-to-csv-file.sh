@@ -15,6 +15,6 @@ printf "Please wait while I process the file.\n\n"
 
 cat "$path" | while read asurite
 do
-  displayname=$(lynx -dump https://asudir-solr.asu.edu/asudir/directory/select?q=asuriteId:$asurite | sed -E 's/\<str>/&\n/g' | grep displayName | sed 's/<str name="displayName">//' | sed 's\</str>\\')
+  displayname=$(lynx -source https://asudir-solr.asu.edu/asudir/directory/select?q=asuriteId:$asurite | sed -E 's/\<str>/&\n/g' | grep displayName | sed 's/<str name="displayName">//' | sed 's\</str>\\')
   echo $asurite,$displayname >> ~/names-output.csv
 done

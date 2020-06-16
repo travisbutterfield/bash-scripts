@@ -14,6 +14,6 @@ printf "Please wait while I process the file.\n\n"
 
 cat "$path" | while read asurite
 do
-  eid=$(lynx -dump https://asudir-solr.asu.edu/asudir/directory/select?q=asuriteId:$asurite | sed -r 's/\<[a-z]+>/&\n/g' | grep eid | sed 's/<str name="eid">//' | sed 's\</str>\\')
+  eid=$(lynx -source https://asudir-solr.asu.edu/asudir/directory/select?q=asuriteId:$asurite | sed -r 's/\<[a-z]+>/&\n/g' | grep eid | sed 's/<str name="eid">//' | sed 's\</str>\\')
   echo $asurite,$eid >> ~/eid-output.csv
 done
