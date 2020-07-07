@@ -18,7 +18,6 @@ for i in "${moduleArr[@]}"
 do
   eightTest=$(lynx --source http://updates.drupal.org/release-history/$i/8.x | xpath -e '/project/releases/release[1]/name' 2>/dev/null | sed 's/<name>//g' | sed 's/<\/name>//g' | cut -d ' ' -f2)
   length=$(expr length "$eightTest")
-  # echo "$i $length"
 
 	if [[ $length -gt 0 ]]
 	then
