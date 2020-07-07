@@ -3,9 +3,9 @@
 printf "\nHello!\n\nWelcome to my bash script for doing mass cache clear on all live environments! Please wait while I work in multiple tabs...\n\n"
 IFS='\n'
 
-declare -a arr="($(terminus site:list --team --fields=name,framework | sed -e '/wordpress/d' | sed -e '/drupal8/d' | sed -e '/morrison-institute/d' | sed -n '1,3 !p' | sed -n '$ !p' | tr -s ' ' | cut -d ' ' -f-2))"
+# declare -a arr="($(terminus site:list --team --fields=name,framework | sed -e '/wordpress/d' | sed -e '/drupal8/d' | sed -e '/morrison-institute/d' | sed -n '1,3 !p' | sed -n '$ !p' | tr -s ' ' | cut -d ' ' -f-2))"
 #create a custom array by uncommenting and editing the next line:
-# declare -a arr=("pubsrvstarter")
+declare -a arr=("pubsrvstarter")
 
 #uncomment next line to check array
 # printf '%s\n' "${arr[@]}"

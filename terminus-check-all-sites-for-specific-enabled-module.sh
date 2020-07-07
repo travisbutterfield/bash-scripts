@@ -6,7 +6,7 @@ read -p "Module machine name: " moduleName
 
 printf "\n Please wait while I gather the data...\n\n"
 
-declare -a siteArr="($(terminus site:list --team --fields=name,framework | sed -e '/wordpress/d' | sed -e '/drupal8/d' | sed -e '/morrison-institute/d' | sed -n '1,3 !p' | sed -n '$ !p' | tr -s ' ' | cut -d ' ' -f-2))"
+declare -a siteArr="($(terminus site:list --team --fields=name,framework | sed -e '/wordpress/d' | sed -e '/drupal8/d' | sed -e '/morrison-institute/d' | sed -n '1,3 !p' | sed -n '$ !p' | tr -s ' ' | cut -d ' ' -f2))"
 
 #declare -a siteArr="(northamericanprocess copp lodestar crd)"
 # printf '%s\n' "${siteArr[@]}" `#check array`
