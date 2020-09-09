@@ -40,3 +40,4 @@ while true; do
 done
 terminus env:clone-content --updatedb --yes -- $site.live $multidev
 terminus env:clear-cache -- $site.$multidev
+git checkout master
