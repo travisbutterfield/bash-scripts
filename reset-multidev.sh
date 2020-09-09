@@ -14,7 +14,7 @@ local_test() {
 		return
 	else
 		giturl="$(terminus connection:info --format="string" --fields=git_url -- $site.dev)"
-		printf "...Please wait while I clone the site to your local environment...\n"
+		printf "\n\n...Please wait while I clone the site to your local environment...\n\n"
 		git clone "$giturl" "/var/www/html/$site"
 	fi
 }
@@ -30,8 +30,7 @@ git reset $commit_hash --hard
 git pull -X theirs origin master
 
 while true; do
-    read -p $'\e[33mAre sure you want to do a force push to $site.$multidev? (y/n)\e[0m: \n> ' yn
-    echo    # (optional) move to a new line
+    read -p $'\e[33m'"Are sure you want to do a force push to $site.$multidev? (y/n): "$'\e[0m \n> ' yn
     case $yn in
         [Yy]* ) git push origin $multidev --force; break;;
         [Nn]* ) printf "Exiting script"; exit 1;;
