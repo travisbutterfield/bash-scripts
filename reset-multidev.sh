@@ -29,14 +29,17 @@ commit_hash="$(git merge-base $multidev master)"
 git reset $commit_hash --hard
 git pull -X theirs origin master
 
-while true; do
-    read -p $'\e[33m'"Are sure you want to do a force push to $site.$multidev? (y/n): "$'\e[0m \n> ' yn
-    case $yn in
-        [Yy]* ) git push origin $multidev --force; break;;
-        [Nn]* ) printf "Exiting script"; exit 1;;
-        * ) echo "Please answer yes or no.";;
-    esac
-done
+# Uncomment this section if you want to add a warning about the force push
+# while true; do
+#     read -p $'\e[33m'"Are sure you want to do a force push to $site.$multidev? (y/n): "$'\e[0m \n> ' yn
+#     case $yn in
+#         [Yy]* ) git push origin $multidev --force; break;;
+#         [Nn]* ) printf "Exiting script"; exit 1;;
+#         * ) echo "Please answer yes or no.";;
+#     esac
+# done
+
+git push origin $multidev --force # Remove this line if you opt for the force push warning
 terminus env:clone-content --updatedb --yes -- $site.live $multidev
 terminus env:clear-cache -- $site.$multidev
 git checkout master
