@@ -23,7 +23,7 @@ do
 	then
 		resultArr+=( "$i: $eightTest" )
 	else
-		resultArr+=( "$i: No D8 version available. Maybe?" )
+		resultArr+=( "$i: No D8 version available." )
 	fi
 done
 
