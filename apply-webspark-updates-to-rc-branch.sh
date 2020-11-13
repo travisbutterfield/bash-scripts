@@ -52,6 +52,8 @@ do
         git add -u
         git commit -m "update to Webspark $fullname"
         git push origin "$env"
+        terminus drush "$i"."$env" -- updb -y
+        terminus env:cc -- "$i"."$env"
         printf "%s\n" "-------------------------------------------------------------"
         printf "PLEASE NOTE:\n"
         printf "There were minor \"delete\" conflicts which have been resolved.\n"
@@ -67,6 +69,8 @@ do
       elif [[ -z "$status" ]]; then
         git commit -m "update to Webspark $fullname"
         git push origin "$env"
+        terminus drush "$i"."$env" -- updb -y
+        terminus env:cc -- "$i"."$env"
         printf "%s\n" "-------------------------------------------------------------"
         printf "PLEASE NOTE:\n"
         printf "There were no conflicts.\n"
@@ -75,7 +79,7 @@ do
       else
         printf "%s\n" "-------------------------------------------------------------"
         printf "PLEASE NOTE:\n"
-        printf "/nYou may have missed something. Please run \"git status\" now./n"
+        printf "You may have missed something. Please run \"git status\" now.\n"
         printf "%s\n" "-------------------------------------------------------------"
       fi
     fi
