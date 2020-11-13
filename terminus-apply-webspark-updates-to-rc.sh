@@ -2,7 +2,7 @@
 
 printf "\nHello!\n\nWelcome to my bash script for mass deployment of webspark updates!\n\n"
 IFS=$'\n'
-read -r -p 'Please designate the desired environment (multidev name, dev, test, live): ' env
+read -r -p 'Please designate the desired environment (multidev name): ' env
 read -r -p 'Please enter the nickname of the webspark release: ' release
 
 #force $release to be lowercase and convert spaces to dashes
@@ -22,7 +22,7 @@ do
 #    printf "%s\n" "test"
     cd /var/www/html/"$i" || exit
     checkremote=$(git remote | grep -c webspark)
-    if [[ checkremote -eq 0 ]]; then
+    if [[ "$checkremote" -eq 0 ]]; then
       git remote add webspark https://github.com/ASU/webspark-drops-drupal7.git
     fi
     git fetch --all
