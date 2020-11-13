@@ -8,8 +8,8 @@ read -r -p "Please designate the multidev you want to reset: " multidev
 printf '\nOpening Pantheon sites in different tabs and resetting the \"%s\" multidev.\n' "$multidev"
 printf 'If \"%s\" does not exist, it will be created.\n\n' "$multidev"
 
-declare -a arr="($(terminus site:list --team --fields=name,framework | sed -e '/wordpress/d' | sed -e '/drupal8/d' | sed -n '1,3 !p' | sed -n '$ !p' | tr -s ' ' | cut -d ' ' -f-2))"
-#declare -a arr=("crim")
+#declare -a arr="($(terminus site:list --team --fields=name,framework | sed -e '/wordpress/d' | sed -e '/drupal8/d' | sed -e '/policyinformatics/d' | sed -e '/vanillad7/d' | sed -n '1,3 !p' | sed -n '$ !p' | tr -s ' ' | cut -d ' ' -f-2))"
+declare -a arr=("foster-youth" "lodestar" "sirc" "csteps")
 #printf '%s\n' "${arr[@]}"
 
 for site in "${arr[@]}"
@@ -17,8 +17,9 @@ do
   export site
   export multidev
   function resetmultidev() {
-    checkfirst=$(terminus multidev:list --fields=id --format=list -- "$site" | grep "$multidev")
-    #printf "$checkfirst\n\n"
+    checkfirst=$(terminus multidev:list --fields=id --format=list -- "$site" | grep "^$multidev$")
+#    printf "checkfirst: %s\n" "$checkfirst"
+#    printf "multidev: %s\n" "$multidev"
     #check if multidev exists
     if [[ "$checkfirst" != "$multidev" ]]
     then
