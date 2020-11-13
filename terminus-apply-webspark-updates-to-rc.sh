@@ -79,11 +79,14 @@ do
         git push origin "$env"
         printf "%s\n" "-------------------------------------------------------------"
         printf "PLEASE NOTE:\n"
-        printf "There were no conflicts. \n"
+        printf "There were no conflicts.\n"
         printf "The committed changes were pushed to your remote branch.\n"
         printf "%s\n" "-------------------------------------------------------------"
       else
-        printf "/nyou missed something./n"
+        printf "%s\n" "-------------------------------------------------------------"
+        printf "PLEASE NOTE:\n"
+        printf "/nYou may have missed something. Please run \"git status\" now./n"
+        printf "%s\n" "-------------------------------------------------------------"
       fi
     fi
   }
