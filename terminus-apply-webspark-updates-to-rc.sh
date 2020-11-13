@@ -23,6 +23,7 @@ do
     cd /var/www/html/"$i" || exit
     checkremote=$(git remote | grep -c webspark)
     if [[ "$checkremote" -eq 0 ]]; then
+      printf "The \"webspark\" remote is not configured on this site. Adding now...\n\n"
       git remote add webspark https://github.com/ASU/webspark-drops-drupal7.git
     fi
     git fetch --all
