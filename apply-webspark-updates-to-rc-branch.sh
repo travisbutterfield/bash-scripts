@@ -64,16 +64,6 @@ do
         printf "Please run \"git status\" and resolve the conflicts.\n"
         printf "When finished, push the changes to your remote branch.\n"
         printf "%s\n" "-------------------------------------------------------------"
-      elif [[  "$count" -gt 0 ]] && [[ "$count" -ne "$delcount" ]]; then
-        git commit -m "update to Webspark $fullname"
-        nothing=$(git status --porcelain=1)
-        if [[ -z "$nothing" ]]; then
-          printf "%s\n" "-------------------------------------------------------------"
-          printf "PLEASE NOTE:\n"
-          printf "There were no conflicts. \n"
-          printf "Please push the committed changes to your remote branch now.\n"
-          printf "%s\n" "-------------------------------------------------------------"
-        fi
       elif [[ -z "$status" ]]; then
         git commit -m "update to Webspark $fullname"
         git push origin "$env"
