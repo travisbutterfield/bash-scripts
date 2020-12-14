@@ -13,9 +13,9 @@ declare -a arr="($(terminus site:list --team --fields=id,framework | sed -e '/wo
 #uncomment next line to check array
 printf '%s\n' "${arr[@]}"
 
-# for i in "${arr[@]}"
-# do
-#   terminus $command $i $email $pantheonrole
-# done 
+for i in "${arr[@]}"
+do
+  gnome-terminal --tab --title="$i" -- bash -c 'terminus $command '"$i"' '"$email"' "$pantheonrole"'
+done 
 
 unset arr
