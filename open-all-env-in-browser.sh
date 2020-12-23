@@ -12,6 +12,6 @@ declare -a arr="($(terminus site:list --team --fields=name,framework | sed -e '/
 
 for i in "${arr[@]}"
 do
-  terminus env:wake -- "$i".$ENV
+  terminus env:wake -- "$i.$ENV"
   firefox "https://$ENV-$i.ws.asu.edu"
 done

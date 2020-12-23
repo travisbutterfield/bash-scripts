@@ -4,7 +4,7 @@
 terminus auth:login
 
 #Provide the target site name (e.g. your-awesome-site)
-echo 'Provide the site name (e.g. your-awesome-site), then press [ENTER] to reset the Dev environment to Live:';
+echo 'Provide the site name (e.g. your-awesome-site), then press [ENTER] to reset the environment to Live:';
 read SITE;
 echo 'Provide the environment you want to reset:';
 read ENV;
