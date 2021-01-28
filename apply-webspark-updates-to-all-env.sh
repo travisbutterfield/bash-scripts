@@ -11,13 +11,14 @@ release=$(echo "$release" | awk '{print tolower($0)}' | sed -e 's/ /-/g' )
 #get list of sites and clean it up
 declare -a arr="($(terminus site:list --team --fields=name,framework | sed -e '/wordpress/d' | sed -e '/drupal8/d' | sed -e '/policyinformatics/d' | sed -e '/vanillad7/d' | sed -n '1,3 !p' | sed -n '$ !p' | tr -s ' ' | cut -d ' ' -f-2))"
 #arr=("cemhs")
-#printf '%s\n' "${arr[@]}"
+printf '%s\n' "${arr[@]}"
 
 for i in "${arr[@]}"
 do
   export i
   export release
   export env
+  terminus connection:set "$i"."$env" -- git
   function getrelease() {
 #    printf "%s\n" "test"
     cd /var/www/html/"$i" || exit
@@ -34,6 +35,7 @@ do
         return 1
     else
       git checkout "$env"
+      git pull origin "$env"
       git pull -X theirs webspark "$fullname" >> /dev/null 2>&1
       status=$(git status --porcelain=1)
       conflicts=$(git status --porcelain=1 | grep "^[\sMARCDU][\sMARCDU]")
@@ -74,7 +76,7 @@ do
         printf "%s\n" "-------------------------------------------------------------"
         printf "PLEASE NOTE:\n"
         printf "There were no conflicts.\n"
-        printf "The committed changes were pushed to your remote branch.\n"
+        printf "The committed changes were (probably) pushed to your remote branch.\n"
         printf "%s\n" "-------------------------------------------------------------"
       else
         printf "%s\n" "-------------------------------------------------------------"
@@ -82,6 +84,7 @@ do
         printf "You may have missed something. Please run \"git status\" now.\n"
         printf "%s\n" "-------------------------------------------------------------"
       fi
+      git status
     fi
   }
   export -f getrelease

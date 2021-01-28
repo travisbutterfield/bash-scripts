@@ -6,7 +6,7 @@ read -p 'Please add a note for this mass deployment: ' note
 
 # declare -a arr="($(terminus site:list --team --fields=name,framework | sed -e '/wordpress/d' | sed -e '/drupal8/d' | sed -n '1,3 !p' | sed -n '$ !p' | tr -s ' ' | cut -d ' ' -f-2))"
 # create a custom array by uncommenting and editing the next line:
-declare -a arr="(spa crim morrison2017 crd cemhs)"
+declare -a arr="(spa crim crd copp socialwork)"
 
 #uncomment next line to check array
 # printf '%s\n' "${arr[@]}"
